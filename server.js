@@ -29,10 +29,11 @@ app.get('/api/notes', (req, res) => {
 // Posting Notes
 app.post("/api/notes", function(req, res) {
   let newNote = req.body;
+  // adding id, so that it can be used in delete
   let newNoteId = (noteList.length).toString();
   newNote.id = newNoteId;
   noteList.push(newNote);
-  
+  // updating list
   fs.writeFileSync("./db/db.json", JSON.stringify(noteList), err => {
       if (err) throw (err);        
   }); 
@@ -42,12 +43,16 @@ app.post("/api/notes", function(req, res) {
 
 // Deleting Notes
 app.delete("/api/notes/:id", (req, res) => {
+  // finding id
   let id = req.params.id.toString();
+  // finding and comparing id
   for (i=0; i < noteList.length; i++){
       if (noteList[i].id == id){
+      // Deletes one note from where the id is
           noteList.splice(i,1);
       }
   }
+    // updating list
   fs.writeFileSync("./db/db.json", JSON.stringify(noteList));
   res.json(noteList);
 }); 
