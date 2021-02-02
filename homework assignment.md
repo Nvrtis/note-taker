@@ -72,7 +72,7 @@ We would like you to have well over 200 commits by graduation, so commit early a
 
 You are required to submit the following:
 
-* The URL of the deployed application. This should be the link to the url provided by Heroku. Be sure not to submit a link to the Heroku dashboard.
+* The URL of the deployed application. This should be the link to the url provided by Heroku. Be sure not to submit  a link to the Heroku dashboard.
 
 * The URL of the GitHub repository
 

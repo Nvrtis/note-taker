@@ -29,8 +29,8 @@ app.get('/api/notes', (req, res) => {
 // Posting Notes
 app.post("/api/notes", function(req, res) {
   let newNote = req.body;
-  let uniqueId = (noteList.length).toString();
-  newNote.id = uniqueId;
+  let newNoteId = (noteList.length).toString();
+  newNote.id = newNoteId;
   noteList.push(newNote);
   
   fs.writeFileSync("./db/db.json", JSON.stringify(noteList), err => {
@@ -42,16 +42,11 @@ app.post("/api/notes", function(req, res) {
 
 // Deleting Notes
 app.delete("/api/notes/:id", (req, res) => {
-
-  let noteId = req.params.id;
-  let newId = 0;
-  console.log(`Deleting note with id ${noteId}`);
-  noteList = noteList.filter(currentNote => {
-     return currentNote.id != noteId;
-  });
-  for (currentNote of noteList) {
-      currentNote.id = newId.toString();
-      newId++;
+  let id = req.params.id.toString();
+  for (i=0; i < noteList.length; i++){
+      if (noteList[i].id == id){
+          noteList.splice(i,1);
+      }
   }
   fs.writeFileSync("./db/db.json", JSON.stringify(noteList));
   res.json(noteList);
