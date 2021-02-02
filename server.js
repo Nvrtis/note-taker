@@ -5,12 +5,15 @@ const app = express()
 const PORT = process.env.PORT || 8080
 const path = require('path')
 
+let noteList = JSON.parse(fs.readFileSync('./db/db.json', 'utf8'));
+
+
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
-
+app.use(express.static('public'))
 
 // * HTML ROUTES
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile( path.join(__dirname + '/public/index.html'))
 })
 
@@ -20,19 +23,10 @@ app.get('/notes', (req, res) => {
 
 //  * API ROUTES
 app.get('/api/notes', (req, res) => {
-  res.json(__dirname + `/db/db.json`)
+  res.json(noteList)
 })
+
 
 app.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`)
 })
-
-
-
-// // add new characters
-// app.post('/api/notes/add', (req, res) => {
-//   const newCharacter = req.body
-//   newCharacter.routeName = newCharacter.name.replace(/ /g, '').toLowerCase()
-//   characters.push(newCharacter)
-//   res.status(200).send()
-// })
