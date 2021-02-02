@@ -26,7 +26,7 @@ app.get('/api/notes', (req, res) => {
   res.json(noteList)
 })
 
-
+// Posting Notes
 app.post("/api/notes", function(req, res) {
   let newNote = req.body;
   let uniqueId = (noteList.length).toString();
@@ -40,6 +40,7 @@ app.post("/api/notes", function(req, res) {
 
 });
 
+// Deleting Notes
 app.delete("/api/notes/:id", (req, res) => {
 
   let noteId = req.params.id;
