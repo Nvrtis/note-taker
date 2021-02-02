@@ -27,6 +27,20 @@ app.get('/api/notes', (req, res) => {
 })
 
 
+app.post("/api/notes", function(req, res) {
+  let newNote = req.body;
+  let uniqueId = (noteList.length).toString();
+  newNote.id = uniqueId;
+  noteList.push(newNote);
+  
+  fs.writeFileSync("./db/db.json", JSON.stringify(noteList), err => {
+      if (err) throw (err);        
+  }); 
+  res.json(noteList);    
+
+});
+
+
 app.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`)
 })
