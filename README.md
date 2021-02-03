@@ -11,7 +11,7 @@
   ![Main page](./public/assets/img/main.png)
 
 
-  [Link to webpage](https://salty-gorge-35909.herokuapp.com/)
+  [Link to deployment at Heroku](https://salty-gorge-35909.herokuapp.com/)
   
   As a user, I want to be able to write and save Notes, i want to be able to deletes notes I've written before, So that i can organize my thoughts and keep track of task i need to complete  
     
@@ -19,8 +19,6 @@
   [-Installation](#Installation)  
   [-Description](#Description)    
   [-Usage](#Usage)  
-  [-Contributors](#Contributors)  
-  [-Test](#Test)  
   [-Questions](#Questions)  
   
   
